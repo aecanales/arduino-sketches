@@ -1,0 +1,6 @@
+{
+    "sketch": "joystick.ino",
+    "programmer": "ArduinoISP",
+    "board": "arduino:avr:uno",
+    "port": "COM5"
+}
