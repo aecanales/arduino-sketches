@@ -10,7 +10,7 @@ screen = pygame.display.set_mode((225, 225))
 
 
 def parse_serial() -> str:
-    """ Reads the serial and returns it as a friendly string. """
+    """ Reads the serial and returns it as a friendly string. Returns empty string if there is nothing in the serial. """
     serial_reading = arduino.readline()[:-2]  # We remove the new line.
     serial_reading = str(serial_reading)[2:-1]  # We convert from bytes to string and remove the b''.
     return serial_reading
