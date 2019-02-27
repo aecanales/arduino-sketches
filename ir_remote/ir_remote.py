@@ -2,8 +2,6 @@ import serial
 import pygame
 from pygame.locals import *
 
-img = pygame.image.load('ir_remote.png')
-
 pygame.init()
 
 # Check the the Arduino IDE to make sure the COM port is correct!
@@ -19,6 +17,30 @@ def parse_serial() -> str:
 
 
 run = True
+img = pygame.image.load('ir_remote.png')
+positions = {
+    'CH-':  ( 88,  38),
+    'CH':   (112,  38),
+    'CH+':  (138,  38),
+    '|<<':  ( 88,  62),
+    '>>|':  (112,  62),
+    '>|':   (138,  62),
+    '-':    ( 88,  84),
+    '+':    (112,  84),
+    'EQ':   (138,  84),
+    '0':    ( 88, 106),
+    '100+': (112, 106),
+    '200+': (138, 106),
+    '1':    ( 88, 127),
+    '2':    (112, 127),
+    '3':    (138, 127),
+    '4':    ( 88, 151),
+    '5':    (112, 151),
+    '6':    (138, 151),
+    '7':    ( 88, 174),
+    '8':    (112, 174),
+    '9':    (138, 174)
+}
 
 while run:
     for event in pygame.event.get():
@@ -31,6 +53,6 @@ while run:
     remote = parse_serial()
 
     if remote != '':
-        print(remote)
+        pygame.draw.circle(screen, (255, 0, 0), positions[remote], 10)
 
     pygame.display.flip()
