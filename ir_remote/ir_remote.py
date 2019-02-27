@@ -1,5 +1,8 @@
 import serial
 import pygame
+from pygame.locals import *
+
+img = pygame.image.load('ir_remote.png')
 
 pygame.init()
 
@@ -22,7 +25,12 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
+    screen.fill((255, 255, 255))
+    screen.blit(img, (0, 0))
+
     remote = parse_serial()
 
-    if remote != "":
+    if remote != '':
         print(remote)
+
+    pygame.display.flip()
